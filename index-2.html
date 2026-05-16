@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aimvesting - eCommerce Strategy for UK Sellers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-grey: #1a1f2e;
+            --mint: #00d084;
+            --pink: #ff6b9d;
+            --sky-blue: #5eb3d6;
+            --light-grey: #f5f7fa;
+            --text-grey: #718096;
+            --border-grey: #cbd5e0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: var(--dark-grey);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+        }
+
+        button {
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(26, 31, 46, 0.95);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mint);
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-menu button {
+            background: none;
+            border: none;
+            color: #a0aec0;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu button.active {
+            color: #ffffff;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+        }
+
+        .nav-cta {
+            display: none;
+            padding: 0.5rem 1.5rem;
+            background: var(--mint);
+            color: var(--dark-grey);
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--mint);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--dark-grey);
+            padding: 1.5rem;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu button {
+            text-align: left;
+            padding: 0.5rem 0;
+            color: #cbd5e0;
+            background: none;
+            border: none;
+            font-weight: 500;
+        }
+
+        .mobile-menu button.active {
+            color: var(--mint);
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: block;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Main content */
+        main {
+            padding-top: 4rem;
+        }
+
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--dark-grey);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 208, 132, 0.1), transparent 50%), radial-gradient(circle at 80% 80%, rgba(94, 179, 214, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 56rem;
+        }
+
+        .hero h1 {
+            font-size: 3.75rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .mint {
+            color: var(--mint);
+        }
+
+        .hero h1 .pink {
+            color: var(--pink);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #cbd5e0;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--mint);
+            color: var(--dark-grey);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--pink);
+            border: 2px solid var(--pink);
+        }
+
+        .btn-tertiary {
+            background: var(--sky-blue);
+            color: #ffffff;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+        }
+
+        /* Trust Signals */
+        .trust-signals {
+            background: var(--light-grey);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .trust-item h3 {
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-item.mint h3 {
+            color: var(--mint);
+        }
+
+        .trust-item.pink h3 {
+            color: var(--pink);
+        }
+
+        .trust-item.blue h3 {
+            color: var(--sky-blue);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 1.5rem;
+            border: 2px solid var(--mint);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-grey);
+        }
+
+        .service-card p {
+            color: var(--text-grey);
+        }
+
+        /* Services Detail */
+        .services-detail {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .service-detail {
+            border-left: 4px solid var(--mint);
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .service-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .service-detail-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-detail h2 {
+            font-size: 1.875rem;
+            color: var(--dark-grey);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mint);
+        }
+
+        .service-desc {
+            font-size: 1.125rem;
+            color: var(--text-grey);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .benefit-check {
+            color: var(--mint);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            color: var(--dark-grey);
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--pink);
+            transform: translateY(-24px);
+        }
+
+        .pricing-badge {
+            background: var(--pink);
+            color: #ffffff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-grey);
+        }
+
+        .pricing-desc {
+            color: var(--text-grey);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--mint);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-period {
+            color: var(--text-grey);
+            font-size: 0.875rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark-grey);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--mint);
+            font-weight: 700;
+        }
+
+        /* AI Section */
+        .ai-section {
+            background: var(--dark-grey);
+            color: #ffffff;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .ai-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .ai-icon {
+            font-size: 3.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-title {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--mint);
+        }
+
+        .ai-desc {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: #cbd5e0;
+        }
+
+        .ai-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .ai-list li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: #cbd5e0;
+        }
+
+        .ai-list li::before {
+            content: '→';
+            color: var(--mint);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .ai-list strong {
+            color: #ffffff;
+        }
+
+        .ai-card {
+            background: rgba(0, 208, 132, 0.05);
+            border: 2px solid var(--mint);
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .ai-impact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-impact-item:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 208, 132, 0.3);
+            padding-bottom: 1.5rem;
+        }
+
+        .ai-impact-value {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--mint);
+            margin-bottom: 0.25rem;
+        }
+
+        .ai-impact-desc {
+            font-size: 0.875rem;
+            color: #cbd5e0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-grey);
+            color: #cbd5e0;
+            padding: 3rem 1.5rem;
+        }
+
+        .footer-grid {
+            max-width: 64rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col button {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .footer-col button:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 208, 132, 0.3);
+            text-align: center;
+        }
+
+        /* Typography */
+        h1 { font-size: 2.25rem; }
+        h2 { font-size: 1.875rem; }
+        h3 { font-size: 1.5rem; }
+
+        .text-center { text-align: center; }
+        .text-lg { font-size: 1.125rem; }
+        .font-semibold { font-weight: 600; }
+
+        /* Spacing */
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-12 { margin-top: 3rem; }
+
+        /* Hidden */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">aimvesting</div>
+            <div class="nav-menu">
+                <button onclick="showPage('home')">Home</button>
+                <button onclick="showPage('services')">Services</button>
+                <button onclick="showPage('pricing')">Pricing</button>
+                <button onclick="showPage('about')">About</button>
+                <button onclick="showPage('contact')">Contact</button>
+            </div>
+            <button class="nav-cta" onclick="showPage('contact')">Get Started</button>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button onclick="showPage('home'); toggleMenu()">Home</button>
+            <button onclick="showPage('services'); toggleMenu()">Services</button>
+            <button onclick="showPage('pricing'); toggleMenu()">Pricing</button>
+            <button onclick="showPage('about'); toggleMenu()">About</button>
+            <button onclick="showPage('contact'); toggleMenu()">Contact</button>
+            <button class="btn btn-primary" onclick="showPage('contact'); toggleMenu()" style="margin-top: 1rem; width: 100%;">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- HOME PAGE -->
+        <div id="homePage" class="page">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Turn eCommerce <span class="mint">chaos</span> into <span class="pink">profit</span></h1>
+                    <p>Expert strategy for eBay, Amazon, and multi-channel sellers. From audit to execution—we help UK SMEs scale without the headaches.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showPage('contact')">Book Free Discovery Call</button>
+                        <button class="btn btn-secondary" onclick="showPage('services')">Explore Services</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust Signals -->
+            <section class="section" style="background: var(--light-grey);">
+                <div class="container">
+                    <div class="trust-signals">
+                        <div class="trust-item mint">
+                            <h3>50+</h3>
+                            <p>Sellers audited & guided</p>
+                        </div>
+                        <div class="trust-item pink">
+                            <h3>£2M+</h3>
+                            <p>Total client revenue improved</p>
+                        </div>
+                        <div class="trust-item blue">
+                            <h3>100%</h3>
+                            <p>Client satisfaction rate</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Preview -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="text-center mb-4">What We Do</h2>
+                    <p class="text-center text-lg mb-8" style="color: var(--text-grey);">Specialist support across every channel and operation</p>
+                    <div class="services-grid">
+                        <div class="service-card" onclick="showPage('services')">
+                            <div class="service-card-icon">🤖</div>
+                            <h3>AI Adoption & Automation</h3>
+                            <p>Scale without hiring. Automate workflows with AI.</p>
+                        </div>
+                        <div class="service-card" onclick="showPage('services')">
+                            <div class="service-card-icon">📦</div>
+                            <h3>eBay Optimisation</h3>
+                            <p>Increase sales velocity and visibility on eBay</p>
+                        </div>
+                        <div class="service-card" onclick="showPage('services')">
+                            <div class="service-card-icon">🛍️</div>
+                            <h3>Amazon Strategy (FBA & FBM)</h3>
+                            <p>Optimise profitability across FBA and FBM</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <button class="btn btn-primary" onclick="showPage('services')">View All Services →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Section -->
+            <section class="section ai-section">
+                <div class="container">
+                    <div class="ai-grid">
+                        <div>
+                            <div class="ai-icon">🤖</div>
+                            <h2 class="ai-title">Scale Without Hiring</h2>
+                            <p class="ai-desc">AI is transforming eCommerce. Most sellers don't know where to start. We're your conduit to successful AI adoption.</p>
+                            <ul class="ai-list">
+                                <li><strong>Automate pricing</strong> with intelligent algorithms</li>
+                                <li><strong>Forecast inventory</strong> accurately, reduce overstock</li>
+                                <li><strong>Automate customer service</strong> with AI chatbots</li>
+                                <li><strong>Reduce headcount needs</strong> while scaling revenue</li>
+                            </ul>
+                            <button class="btn btn-secondary" onclick="showPage('services')" style="border-color: var(--pink); color: var(--pink);">Explore AI Adoption</button>
+                        </div>
+                        <div class="ai-card">
+                            <h3 class="ai-title">Real Impact</h3>
+                            <div class="ai-impact-item">
+                                <div class="ai-impact-value">↓ 30-40% manual work reduction</div>
+                                <div class="ai-impact-desc">Fewer hours spent on pricing, forecasting, customer service</div>
+                            </div>
+                            <div class="ai-impact-item">
+                                <div class="ai-impact-value">↑ 15-25% accuracy improvement</div>
+                                <div class="ai-impact-desc">Better forecasting, smarter pricing, fewer errors</div>
+                            </div>
+                            <div class="ai-impact-item">
+                                <div class="ai-impact-value">£ No new headcount needed</div>
+                                <div class="ai-impact-desc">Scale to £50k+ revenue without hiring staff</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final CTA -->
+            <section class="section" style="background: var(--dark-grey); color: #fff; text-align: center;">
+                <div class="container">
+                    <h2 class="mb-6" style="color: #fff;">Ready to scale your eCommerce business?</h2>
+                    <p class="text-lg mb-8" style="color: #cbd5e0;">Let's talk strategy. No fluff, no upsell—just honest advice on how to grow.</p>
+                    <button class="btn btn-primary" onclick="showPage('contact')">Book a Call</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- SERVICES PAGE -->
+        <div id="servicesPage" class="page hidden">
+            <section class="section">
+                <div class="container">
+                    <h1 class="mb-4">Our Services</h1>
+                    <p class="text-lg mb-8" style="color: var(--text-grey);">Tailored eCommerce strategy across every channel and operation</p>
+                    <div class="services-detail">
+                        <div class="service-detail">
+                            <div class="service-detail-icon">🤖</div>
+                            <div class="service-detail-header">
+                                <h2>AI Adoption & Automation</h2>
+                                <div class="service-price">From £400</div>
+                            </div>
+                            <p class="service-desc">We help you identify where AI can drive efficiency, reduce manual work, and eliminate headcount needs. From customer service automation to intelligent pricing and inventory forecasting, we're your conduit to successful AI implementation.</p>
+                            <div class="benefits">
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">AI tool assessment & selection</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Workflow automation design</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Staff efficiency improvements</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Cost & headcount reduction</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Implementation roadmap</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Staff training & change mgmt</span></div>
+                            </div>
+                            <button class="btn btn-tertiary" onclick="showPage('contact')">Learn More</button>
+                        </div>
+
+                        <div class="service-detail">
+                            <div class="service-detail-icon">📦</div>
+                            <div class="service-detail-header">
+                                <h2>eBay Optimisation</h2>
+                                <div class="service-price">From £150</div>
+                            </div>
+                            <p class="service-desc">From listing optimisation and pricing strategy to category selection and marketplace positioning, we'll help you dominate eBay.</p>
+                            <div class="benefits">
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Listing audits & keyword research</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Pricing & competitive analysis</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Category & attribute optimization</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Shipping & returns strategy</span></div>
+                            </div>
+                            <button class="btn btn-tertiary" onclick="showPage('contact')">Learn More</button>
+                        </div>
+
+                        <div class="service-detail">
+                            <div class="service-detail-icon">🛍️</div>
+                            <div class="service-detail-header">
+                                <h2>Amazon Strategy (FBA & FBM)</h2>
+                                <div class="service-price">From £200</div>
+                            </div>
+                            <p class="service-desc">Whether you're using FBA or FBM, we'll help you optimize profitability. Includes breakeven analysis, fee optimization, inventory turnover, and multi-variant strategy.</p>
+                            <div class="benefits">
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">FBA & FBM fee analysis</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Profit margin optimization</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Inventory planning</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Fulfillment method comparison</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">A/B testing strategy</span></div>
+                            </div>
+                            <button class="btn btn-tertiary" onclick="showPage('contact')">Learn More</button>
+                        </div>
+
+                        <div class="service-detail">
+                            <div class="service-detail-icon">🌐</div>
+                            <div class="service-detail-header">
+                                <h2>Multi-Channel Strategy</h2>
+                                <div class="service-price">From £300</div>
+                            </div>
+                            <p class="service-desc">Unified inventory management, channel prioritisation, and cross-platform analytics to scale without chaos.</p>
+                            <div class="benefits">
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Channel performance analysis</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Inventory sync & allocation</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Platform comparison & selection</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Growth roadmap</span></div>
+                            </div>
+                            <button class="btn btn-tertiary" onclick="showPage('contact')">Learn More</button>
+                        </div>
+
+                        <div class="service-detail">
+                            <div class="service-detail-icon">⭐</div>
+                            <div class="service-detail-header">
+                                <h2>Review & Feedback Management</h2>
+                                <div class="service-price">From £100</div>
+                            </div>
+                            <p class="service-desc">Proactive feedback strategies, review campaigns, and reputation recovery to maintain a 4.9+ seller score.</p>
+                            <div class="benefits">
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Feedback strategy & templates</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Review campaign setup</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Negative feedback response</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Seller health dashboard</span></div>
+                            </div>
+                            <button class="btn btn-tertiary" onclick="showPage('contact')">Learn More</button>
+                        </div>
+
+                        <div class="service-detail">
+                            <div class="service-detail-icon">📮</div>
+                            <div class="service-detail-header">
+                                <h2>Returns & Fulfilment</h2>
+                                <div class="service-price">From £150</div>
+                            </div>
+                            <p class="service-desc">Returns processing workflows, refund timelines, and fulfilment efficiency to reduce costs and improve customer satisfaction.</p>
+                            <div class="benefits">
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Returns process optimization</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Fulfilment workflow design</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Carrier partner strategy</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Cost reduction analysis</span></div>
+                            </div>
+                            <button class="btn btn-tertiary" onclick="showPage('contact')">Learn More</button>
+                        </div>
+
+                        <div class="service-detail">
+                            <div class="service-detail-icon">🔍</div>
+                            <div class="service-detail-header">
+                                <h2>Full eCommerce Audit</h2>
+                                <div class="service-price">From £500</div>
+                            </div>
+                            <p class="service-desc">Complete audit across all channels, operations, and marketing. Deliver a prioritised 90-day action plan with quick wins and long-term strategy.</p>
+                            <div class="benefits">
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Multi-channel audit</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">90-day action tracker</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Competitor benchmarking</span></div>
+                                <div class="benefit"><span class="benefit-check">✓</span><span class="benefit-text">Growth roadmap & KPIs</span></div>
+                            </div>
+                            <button class="btn btn-tertiary" onclick="showPage('contact')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PRICING PAGE -->
+        <div id="pricingPage" class="page hidden">
+            <section class="section" style="background: var(--light-grey);">
+                <div class="container">
+                    <h1 class="text-center mb-4">Pricing That Scales With You</h1>
+                    <p class="text-center text-lg mb-8" style="color: var(--text-grey);">No hidden fees. No hourly rates. Just transparent, value-based pricing.</p>
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <h3>Seller Pro</h3>
+                            <p class="pricing-desc">Best for SME sellers</p>
+                            <div class="pricing-price">£24<span class="pricing-period">/month</span></div>
+                            <button class="btn btn-primary" style="width: 100%; margin-bottom: 2rem;" onclick="showPage('contact')">Start Free Trial</button>
+                            <ul class="pricing-features">
+                                <li>Access to all calculators & tools</li>
+                                <li>eBay Fee Calculator</li>
+                                <li>Amazon FBA Calculator</li>
+                                <li>Store Health Check Quiz</li>
+                                <li>Email support (48hr response)</li>
+                                <li>Monthly strategy brief</li>
+                            </ul>
+                        </div>
+
+                        <div class="pricing-card featured">
+                            <div class="pricing-badge">Most Popular</div>
+                            <h3>Project-Based</h3>
+                            <p class="pricing-desc">One-off audits & strategies</p>
+                            <div class="pricing-price">From £150<span class="pricing-period">/project</span></div>
+                            <button class="btn btn-secondary" style="width: 100%; margin-bottom: 2rem; border-color: var(--pink); color: var(--pink); background: transparent;" onclick="showPage('contact')">Book Discovery Call</button>
+                            <ul class="pricing-features">
+                                <li>Single audit or strategy project</li>
+                                <li>Detailed audit report</li>
+                                <li>Competitor analysis</li>
+                                <li>Actionable recommendations</li>
+                                <li>Follow-up consultation included</li>
+                                <li>Turn-around: 5–7 working days</li>
+                            </ul>
+                        </div>
+
+                        <div class="pricing-card">
+                            <h3>Retainer</h3>
+                            <p class="pricing-desc">Ongoing strategy & support</p>
+                            <div class="pricing-price">From £500<span class="pricing-period">/month</span></div>
+                            <button class="btn btn-primary" style="width: 100%; margin-bottom: 2rem;" onclick="showPage('contact')">Schedule Call</button>
+                            <ul class="pricing-features">
+                                <li>Monthly strategy calls</li>
+                                <li>Quarterly audits & reports</li>
+                                <li>Priority email support</li>
+                                <li>Access to all tools & templates</li>
+                                <li>Ad-hoc consultancy hours</li>
+                                <li>Custom integrations available</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="aboutPage" class="page hidden">
+            <section class="section">
+                <div class="container" style="max-width: 48rem;">
+                    <h1 class="mb-8">About Aimvesting</h1>
+                    <h2 class="mb-4" style="margin-top: 2rem;">Our Story</h2>
+                    <p style="color: var(--text-grey); margin-bottom: 1rem;">Aimvesting was built by eCommerce practitioners for eCommerce practitioners. We've spent years inside multi-channel operations—eBay, Amazon, BackMarket, OnBuy, Shopify—and we've seen what works and what doesn't.</p>
+                    <p style="color: var(--text-grey); margin-bottom: 1rem;">Too many sellers are leaving money on the table. They're paying too much in fees, losing sales to poor optimisation, and drowning in operational friction. We built Aimvesting to change that.</p>
+
+                    <h2 class="mb-4" style="margin-top: 2rem;">Our Philosophy</h2>
+                    <div style="margin-top: 1.5rem;">
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <span style="color: var(--mint); font-weight: 700; flex-shrink: 0;">✓</span>
+                            <div>
+                                <strong style="color: var(--dark-grey);">Real-world focused</strong>
+                                <p style="color: var(--text-grey);">We don't do theory. Every recommendation is tested in live marketplaces.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <span style="color: var(--mint); font-weight: 700; flex-shrink: 0;">✓</span>
+                            <div>
+                                <strong style="color: var(--dark-grey);">Transparent pricing</strong>
+                                <p style="color: var(--text-grey);">No hidden fees, no surprise upsells. You know exactly what you're getting.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <span style="color: var(--mint); font-weight: 700; flex-shrink: 0;">✓</span>
+                            <div>
+                                <strong style="color: var(--dark-grey);">Growth obsessed</strong>
+                                <p style="color: var(--text-grey);">Your success is our success. We measure ourselves by your revenue growth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contactPage" class="page hidden">
+            <section class="section" style="background: var(--dark-grey); color: #fff;">
+                <div class="container" style="max-width: 48rem;">
+                    <h1 class="text-center mb-4" style="color: var(--mint);">Let's Talk</h1>
+                    <p class="text-center text-lg mb-12" style="color: #cbd5e0;">Book a free 30-minute discovery call. No pitch, just strategy.</p>
+
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;">
+                        <div style="border: 2px solid var(--mint); border-radius: 0.5rem; padding: 2rem;">
+                            <h3 style="color: #fff; margin-bottom: 1rem;">📅 Discovery Call</h3>
+                            <p style="color: #cbd5e0; margin-bottom: 1rem;">30 minutes with a strategist. Discuss your goals, challenges, and next steps.</p>
+                        </div>
+                        <div style="border: 2px solid var(--pink); border-radius: 0.5rem; padding: 2rem;">
+                            <h3 style="color: #fff; margin-bottom: 1rem;">📧 Email</h3>
+                            <p style="color: #cbd5e0; margin-bottom: 1rem;">Drop us a line with your question or project brief.</p>
+                            <a href="mailto:hello@aimvesting.com" class="btn btn-secondary" style="border-color: var(--pink); color: var(--pink);">hello@aimvesting.com</a>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--light-grey); color: var(--dark-grey); border-radius: 0.5rem; padding: 2rem; text-align: center;">
+                        <h3 class="mb-4">Book Your Discovery Call</h3>
+                        <p style="color: var(--text-grey); margin-bottom: 1rem;">Use the calendar below to find a time that works for you. 30 minutes, no pressure.</p>
+                        <a href="https://calendly.com/louisdenninger/30min" target="_blank" class="btn btn-primary">Open Calendar →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div style="font-size: 1.5rem; font-weight: 700; color: var(--mint); margin-bottom: 1rem;">aimvesting</div>
+                <p>eCommerce strategy for UK sellers</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><button onclick="showPage('services')">eBay</button></li>
+                    <li><button onclick="showPage('services')">Amazon</button></li>
+                    <li><button onclick="showPage('services')">AI Adoption</button></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><button onclick="showPage('about')">About</button></li>
+                    <li><button onclick="showPage('contact')">Contact</button></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:hello@aimvesting.com">hello@aimvesting.com</a></li>
+                    <li><a href="https://linkedin.com/company/aimvesting" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://twitter.com/aimvesting" target="_blank">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Aimvesting. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Show selected page
+            const page = document.getElementById(pageName + 'Page');
+            if (page) {
+                page.classList.remove('hidden');
+            }
+
+            // Close mobile menu
+            document.getElementById('mobileMenu').classList.remove('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Update nav buttons
+            document.querySelectorAll('.nav-menu button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        // Show home page by default
+        showPage('home');
+    </script>
+</body>
+</html>
